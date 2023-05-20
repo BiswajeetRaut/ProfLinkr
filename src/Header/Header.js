@@ -8,19 +8,18 @@ import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import ChatIcon from "@material-ui/icons/Chat";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { useDispatch } from "react-redux";
-import { logout, selectUser } from "../features/userSlice";
+import { logout, profchange, selectProfile, selectUser } from "../features/userSlice";
 import { auth } from "../firebase";
 import { useSelector } from "react-redux";
-
+import { Avatar } from "@material-ui/core";
 function Header() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  console.log(user);
+  const profile = useSelector(selectProfile);
   const logOutOfApp = () => {
     dispatch(logout());
     auth.signOut();
   };
-
   return (
     <div className="header">
       <div className="header-left">
@@ -39,13 +38,15 @@ function Header() {
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
         <HeaderOption Icon={ChatIcon} title="Messaging" />
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-        <HeaderOption Icon={NotificationsIcon} title="Notifications" />
+        <HeaderOption Icon={Avatar} title="Profile" onClick={()=>{dispatch(profchange({
+          state: !profile,
+        }))}}/>
         {
-        user==null?(<></>):(<HeaderOption
+        user==null?(<></>):(<button
+          className="login-btn"
           onClick={logOutOfApp}
-          title={"Logout"}
-          avatar={true}
-        />)
+        >LogOut</button>
+        )
       }
       </div>
     </div>

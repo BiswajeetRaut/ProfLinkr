@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import { login, logout, selectUser } from "./features/userSlice";
+import { login, logout, selectProfile, selectUser } from "./features/userSlice";
 import Feed from "./Feed/Feed";
 import { auth } from "./firebase";
 import Header from "./Header/Header";
 import Login from "./Login/Login";
 import Sidebar from "./Sidebar/Sidebar";
 import Widgets from "./Widgets/Widgets";
-
+import Profile from "./Profile";
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-
+  const profile = useSelector(selectProfile);
   // useEffect(() => {
   //   auth.onAuthStateChanged((userAuth) => {
   //     if (userAuth) {
@@ -38,11 +38,15 @@ function App() {
       {user==null ? (
         <Login />
       ) : (
-        <div className="app-body">
-          {/* <Sidebar /> */}
+      profile?(<div className="app-body">
+          <Sidebar />
           <Feed />
           <Widgets />
-        </div>
+        </div>):(
+          <>
+            <Profile></Profile>
+          </>
+        )
       )}
     </div>
   );

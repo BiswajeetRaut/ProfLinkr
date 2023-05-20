@@ -48,3 +48,11 @@
     position: absolute;
     right: 0;
 }
+.login-btn{
+    margin-right: 10px;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    background: #0055da;
+    color: white;
+}

@@ -4,6 +4,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
+    profile:false,
   },
 
   reducers: {
@@ -13,12 +14,15 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.user = null;
     },
+    profchange:(state,action)=>{
+      state.profile=action.payload.state;
+    },
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout,profchange } = userSlice.actions;
 
 //Selectors
 export const selectUser = (state) => state.user.user;
-
+export const selectProfile = (state)=> state.user.profile;
 export default userSlice.reducer;

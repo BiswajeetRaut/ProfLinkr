@@ -20,7 +20,7 @@ function Login() {
         {
           dispatch(login({
             email: doc.data().email,
-            displayName: doc.data().name,
+            displayName: doc.data().displayName,
             profileUrl: doc.data().profilePic,
             password:doc.data().password,
             reg: doc.data().reg,
