@@ -4,11 +4,6 @@ A Linkedin which created with ReactJS & ReduxLink.
 
 Click demo to try it by yourself!
 
-## Linkedin Demo Link
-
-You can view the site here
-[Click Me](https://linkedin-clone-v02.web.app/)
-
 ## Topics
 
 - Redux
